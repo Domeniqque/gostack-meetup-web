@@ -2,28 +2,15 @@ import styled from 'styled-components';
 
 import colors from '~/styles/colors';
 
-export const Wrapper = styled.div`
-  height: 100%;
-  background: linear-gradient(-180deg, ${colors.dark}, ${colors.hotPurple});
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+export const Container = styled.div`
+  max-width: 600px;
+  margin: 50px auto 0;
 
-export const Content = styled.div`
-  width: 100%;
-  max-width: 315px;
-  text-align: center;
-
-  img {
-    width: 42px;
-    height: 41px;
-  }
+  padding: 0 10px 30px;
 
   form {
     display: flex;
     flex-direction: column;
-    margin: 40px 0 20px;
 
     input {
       background: rgba(0, 0, 0, 0.1);
@@ -52,15 +39,25 @@ export const Content = styled.div`
       color: ${colors.primary};
     }
 
+    hr {
+      border: 0;
+      border-bottom: 1px solid #979797;
+      opacity: 0.6;
+      margin-top: 15px;
+      margin-bottom: 12px;
+    }
+
     button {
+      width: 182px;
+      align-self: flex-end;
       height: 50px;
       border: 0;
       color: #fff;
       padding: 0 15px;
-      margin: 10px 0;
+      margin: 30px 0;
       border-radius: 4px;
       background: ${colors.primaryLight};
-      font-size: 18px;
+      font-size: 16px;
       font-weight: bold;
       transition: background 200ms;
 
@@ -69,15 +66,5 @@ export const Content = styled.div`
       }
     }
   }
-
-  a {
-    font-size: 16px;
-    font-weight: bold;
-    color: #fff;
-    opacity: 0.6;
-
-    &:hover {
-      opacity: 0.8;
-    }
   }
 `;

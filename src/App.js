@@ -4,11 +4,11 @@ import { Router } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import { PersistGate } from 'redux-persist/integration/react';
 
-import './config/ReactotronConfig';
-import Routes from './routes/index';
-import history from './services/history';
-import { store, persistor } from './store';
-import GlobalStyles from './styles/global';
+import '~config/ReactotronConfig';
+import Routes from '~routes/index';
+import history from '~services/history';
+import { store, persistor } from '~store';
+import GlobalStyles from '~styles/global';
 
 export default function App() {
   return (

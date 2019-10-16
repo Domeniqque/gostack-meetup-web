@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
-  background: #7159c1;
-`;
+import colors from '~/styles/colors';
 
-export const Content = styled.div``;
+export const Wrapper = styled.div`
+  height: 100%;
+  background: linear-gradient(-180deg, ${colors.dark}, ${colors.hotPurple});
+`;
