@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import colors from '~/styles/colors';
 
 export const Container = styled.div`
-  max-width: 600px;
+  max-width: 920px;
   margin: 50px auto 0;
 
   padding: 0 10px 30px;
@@ -13,7 +13,7 @@ export const Container = styled.div`
     flex-direction: column;
 
     input {
-      background: rgba(0, 0, 0, 0.1);
+      background: rgba(0, 0, 0, 0.2);
       border: 0;
       border-radius: 4px;
       color: #fff;
@@ -65,6 +65,5 @@ export const Container = styled.div`
         background: ${colors.primaryDark};
       }
     }
-  }
   }
 `;

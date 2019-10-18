@@ -1,7 +1,10 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
 
-import Dashboard from '~/pages/Dashboard';
+import Meetups from '~/pages/Meetups';
+import MeetupsCreate from '~/pages/Meetups/Create';
+import MeetupsDetails from '~/pages/Meetups/Details';
+import MeetupsEdit from '~/pages/Meetups/Edit';
 import Profile from '~/pages/Profile';
 import SignIn from '~/pages/SignIn';
 import SignUp from '~/pages/SignUp';
@@ -13,8 +16,11 @@ export default function Router() {
     <Switch>
       <Route path="/" exact component={SignIn} />
       <Route path="/register" component={SignUp} />
-      <Route path="/dashboard" component={Dashboard} isPrivate />
       <Route path="/profile" component={Profile} isPrivate />
+      <Route path="/meetups/create" component={MeetupsCreate} isPrivate />
+      <Route path="/meetups/:id/edit" component={MeetupsEdit} isPrivate />
+      <Route path="/meetups/:id" component={MeetupsDetails} isPrivate />
+      <Route path="/meetups" component={Meetups} isPrivate />
     </Switch>
   );
 }
