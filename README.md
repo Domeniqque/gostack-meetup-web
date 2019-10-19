@@ -1,4 +1,4 @@
-## MeetApp
+# MeetApp
 
 This is the frontend of a meetup scheduling system made with ReactJS.
 
@@ -42,3 +42,10 @@ $ yarn start
 ### Meetups
 
 <img alt="Dashboard" title="Dashboard" src=".github/dashboard.gif" width="420px" />
+
+This application was created for conclusion of [Rocketseat](https://github.com/Rocketseat) Bootcamp 9.
+
+## Links
+
+- [API](https://github.com/Domeniqque/desafio-gostack-meetapp)
+- [Mobile App]()
