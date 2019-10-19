@@ -2,7 +2,7 @@
 
 This is the frontend of a meetup scheduling system made with ReactJS.
 
-## Used technologies:
+## Used technologies
 
 - React Js & React Hooks
 - React Router
@@ -13,7 +13,7 @@ This is the frontend of a meetup scheduling system made with ReactJS.
 - Axios, date-fns, react-datepicker, @rocketseat/unform
 - Reactotron
 
-## To install:
+## To install
 
 First make sure you have the working [api available](https://github.com/Domeniqque/desafio-gostack-meetapp).
 
