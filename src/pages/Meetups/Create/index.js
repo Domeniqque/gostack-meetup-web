@@ -7,7 +7,7 @@ import DatePicker from '~/components/DatePicker';
 import FileInput from '~/components/FileInput';
 import { createMeetupRequest } from '~/store/modules/meetup/actions';
 
-import { Container, Form } from '../styles';
+import { Container, Form, Button } from '../styles';
 
 const schema = Yup.object().shape({
   file_id: Yup.number().required('Selecione uma imagem para o evento'),
@@ -48,7 +48,7 @@ export default function Create() {
         />
         <Input name="location" placeholder="Localização" autoComplete="off" />
 
-        <button type="submit">Salvar meetup</button>
+        <Button type="submit">Salvar meetup</Button>
       </Form>
     </Container>
   );

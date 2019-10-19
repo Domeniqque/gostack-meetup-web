@@ -11,6 +11,10 @@ export default function Meetup(state = INITIAL_STATE, action) {
         draft.list = action.payload.meetups;
         break;
       }
+      case '@auth/SIGN_OUT': {
+        draft.list = [];
+        break;
+      }
       default:
     }
   });

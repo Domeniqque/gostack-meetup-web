@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.label`
   width: 100%;
-  height: 300px;
+  min-height: 400px;
   background: #000;
   border: 0;
   border-radius: 4px;
@@ -10,7 +10,6 @@ export const Container = styled.label`
   padding: 0 15px;
   margin: 5px 0;
   font-size: 18px;
-  transition: box-shadow 200ms;
   cursor: pointer;
   overflow: hidden;
   opacity: ${props => (props.hasPreview ? 1 : 0.6)};
@@ -20,7 +19,7 @@ export const Container = styled.label`
   align-items: center;
 
   img {
-    max-height: 300px;
+    max-width: 100%;
   }
 
   input {

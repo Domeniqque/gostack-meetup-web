@@ -15,6 +15,7 @@ export function* createMeetup({ payload }) {
     yield call(api.post, '/meetups', data);
 
     toast.success('Meetup criado com sucesso!');
+    yield put(loadMeetupsRequest());
 
     history.push('/meetups');
   } catch (err) {

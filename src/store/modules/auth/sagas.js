@@ -4,6 +4,7 @@ import { all, takeLatest, put, call } from 'redux-saga/effects';
 import api from '~/services/api';
 import history from '~/services/history';
 
+import { loadMeetupsRequest } from '../meetup/actions';
 import { signFailure, signInSuccess } from './actions';
 
 export function* signUp({ payload }) {
@@ -37,6 +38,7 @@ export function* signIn({ payload }) {
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
     yield put(signInSuccess(token, user));
+    yield put(loadMeetupsRequest());
 
     history.push('/meetups');
   } catch (err) {

@@ -1,26 +1,21 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { MdChevronRight } from 'react-icons/md';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-
-import { loadMeetupsRequest } from '~/store/modules/meetup/actions';
 
 import { Container, MeetupList } from './styles';
 
 export default function Meetups() {
   const meetups = useSelector(state => state.meetup.list);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(loadMeetupsRequest());
-  }, []);
 
   return (
     <Container>
       <header>
         <h1>Meus meetups</h1>
 
-        <Link to="/meetups/create">Novo meetup</Link>
+        <aside>
+          <Link to="/meetups/create">Novo meetup</Link>
+        </aside>
       </header>
       <MeetupList>
         {meetups.map(meetup => (

@@ -9,4 +9,5 @@ export default {
 
   dark: '#22202C',
   hotPurple: '#402845',
+  blue: '#4DBAF9',
 };

@@ -1,4 +1,5 @@
 import { Form as Unform } from '@rocketseat/unform';
+import { darken } from 'polished';
 import styled from 'styled-components';
 
 import colors from '~/styles/colors';
@@ -19,20 +20,52 @@ export const Container = styled.div`
       font-size: 32px;
     }
 
-    a {
-      border: 0;
-      color: #fff;
-      padding: 6px 30px;
-      border-radius: 4px;
-      background: ${colors.primaryLight};
-      font-size: 16px;
-      font-weight: bold;
-      transition: background 200ms;
+    aside {
+      display: flex;
 
-      &:hover {
-        background: ${colors.primaryDark};
+      a {
+        border: 0;
+        color: #fff;
+        padding: 6px 20px;
+        border-radius: 4px;
+        background: ${colors.primaryLight};
+        font-size: 16px;
+        font-weight: bold;
+        transition: background 200ms;
+
+        &:hover {
+          background: ${colors.primaryDark};
+        }
+      }
+
+      button {
+        margin-left: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        span {
+          padding-left: 5px;
+        }
       }
     }
+  }
+`;
+
+export const Button = styled.button`
+  border: 0;
+  color: #fff;
+  padding: 6px 20px;
+  margin: 25px 0;
+  border-radius: 4px;
+  background: ${props => props.background || colors.primaryLight};
+  font-size: 18px;
+  font-weight: bold;
+  transition: background 200ms;
+
+  &:hover {
+    background: ${props =>
+      props.background ? darken(0.05, props.background) : colors.primary};
   }
 `;
 
@@ -40,10 +73,8 @@ export const MeetupList = styled.ul`
   margin: 40px 0 20px;
 
   li {
-    min-height: 62px;
     margin-bottom: 10px;
     background: rgba(0, 0, 0, 0.3);
-    padding: 15px 20px;
     border-radius: 4px;
     transition: background 200ms;
 
@@ -56,6 +87,7 @@ export const MeetupList = styled.ul`
       justify-content: space-between;
       align-items: center;
       text-decoration: none;
+      padding: 15px 20px;
       color: #fff;
 
       div {
@@ -127,19 +159,5 @@ export const Form = styled(Unform)`
 
   & > button {
     align-self: flex-end;
-    height: 50px;
-    border: 0;
-    color: #fff;
-    padding: 6px 30px;
-    margin: 25px 0;
-    border-radius: 4px;
-    background: ${colors.primaryLight};
-    font-size: 18px;
-    font-weight: bold;
-    transition: background 200ms;
-
-    &:hover {
-      background: ${colors.primaryDark};
-    }
   }
 `;

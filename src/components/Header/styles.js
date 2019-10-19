@@ -28,7 +28,7 @@ export const Content = styled.div`
 
     & > button {
       border: 0;
-      padding: 6px 30px;
+      padding: 6px 20px;
       margin: 10px 0;
       border-radius: 4px;
       color: #fff;
