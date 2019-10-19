@@ -15,7 +15,7 @@ This is the frontend of a meetup scheduling system made with ReactJS.
 
 ## To install:
 
-First make sure you have the working api available.
+First make sure you have the working [api available](https://github.com/Domeniqque/desafio-gostack-meetapp).
 
 After cloning the project, run it in your directory:
 
