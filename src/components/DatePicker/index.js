@@ -41,6 +41,7 @@ export default function DatePicker({ name, placeholder }) {
         onChange={data => setDate(data)}
         placeholderText={placeholder}
         minDate={new Date()}
+        autoComplete="off"
         ref={ref}
       />
       {error && <span>{error}</span>}

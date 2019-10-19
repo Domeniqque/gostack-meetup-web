@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import * as Yup from 'yup';
+import { MdAddCircleOutline } from 'react-icons/md';
 
 import DatePicker from '~/components/DatePicker';
 import FileInput from '~/components/FileInput';
@@ -54,7 +55,10 @@ export default function Edit() {
         />
         <Input name="location" placeholder="Localização" autoComplete="off" />
 
-        <Button type="submit">Salvar alterações</Button>
+        <Button type="submit">
+          <MdAddCircleOutline color="#fff" size={20} />
+          <span>Salvar alterações</span>
+        </Button>
       </Form>
     </Container>
   );

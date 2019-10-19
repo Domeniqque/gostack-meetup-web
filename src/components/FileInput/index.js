@@ -4,7 +4,7 @@ import React, { useRef, useState, useEffect } from 'react';
 
 import api from '~/services/api';
 
-import { Container } from './styles';
+import { Container, Loader } from './styles';
 
 export default function FileInput({ name, dataName }) {
   const { registerField, fieldName, error, defaultValue } = useField(
@@ -12,6 +12,7 @@ export default function FileInput({ name, dataName }) {
   );
   const [file, setFile] = useState(defaultValue && defaultValue.id);
   const [preview, setPreview] = useState(defaultValue && defaultValue.url);
+  const [progress, setProgress] = useState(0);
 
   const ref = useRef(null);
 
@@ -26,11 +27,19 @@ export default function FileInput({ name, dataName }) {
   }, [ref.current, name]);// eslint-disable-line
 
   async function handleChange(e) {
+    function onUploadProgress(progressEvent) {
+      const percentCompleted = Math.round(
+        (progressEvent.loaded * 100) / progressEvent.total
+      );
+
+      setProgress(percentCompleted);
+    }
+
     const data = new FormData();
 
     data.append('file', e.target.files[0]);
 
-    const response = await api.post('/files', data);
+    const response = await api.post('/files', data, { onUploadProgress });
     const { id, url } = response.data;
 
     setFile(id);
@@ -50,6 +59,7 @@ export default function FileInput({ name, dataName }) {
           onChange={handleChange}
           data-file={file}
         />
+        <Loader progress={progress} />
       </Container>
       {error && <span>{error}</span>}
     </>

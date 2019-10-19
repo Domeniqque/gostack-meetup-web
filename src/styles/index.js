@@ -59,7 +59,7 @@ export const Container = styled.div`
     }
   }
 
-  p {
+  & > p {
     color: #fff;
     font-size: 18px;
     text-align: center;

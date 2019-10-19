@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import colors from '~/styles/colors';
+
 export const Container = styled.label`
   width: 100%;
   min-height: 400px;
@@ -18,6 +20,8 @@ export const Container = styled.label`
   justify-content: center;
   align-items: center;
 
+  position: relative;
+
   img {
     max-width: 100%;
   }
@@ -25,4 +29,15 @@ export const Container = styled.label`
   input {
     display: none;
   }
+`;
+
+export const Loader = styled.div`
+  height: 3px;
+  background: ${colors.primary};
+  position: absolute;
+  bottom: 0;
+  width: ${props => props.progress}%;
+  left: 0;
+  visibility: ${props => (props.progress < 100 ? 'visible' : 'hidden')};
+  transition: width 400ms ease, visibility 1s ease;
 `;
