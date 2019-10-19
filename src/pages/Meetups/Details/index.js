@@ -3,6 +3,7 @@ import { MdEdit, MdDeleteForever, MdEvent, MdPlace } from 'react-icons/md';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
+import history from '~/services/history';
 import colors from '~/styles/colors';
 
 import { Container, Button } from '../styles';
@@ -15,13 +16,17 @@ export default function Details() {
     state.meetup.list.find(m => m.id === Number(id))
   );
 
+  function handleEdit() {
+    history.push(`/meetups/${meetup.id}/edit`);
+  }
+
   return (
     <Container>
       <header>
         <h1>{meetup.title}</h1>
 
         <aside>
-          <Button type="button" background={colors.blue}>
+          <Button type="button" background={colors.blue} onClick={handleEdit}>
             <MdEdit color="#fff" size={20} />
             <span>Editar</span>
           </Button>

@@ -6,7 +6,7 @@ import { all, call, takeLatest, put } from 'redux-saga/effects';
 import api from '~/services/api';
 import history from '~/services/history';
 
-import { loadMeetupsRequest, loadMeetupsSuccess } from './actions';
+import { loadMeetupsSuccess, loadMeetupsRequest } from './actions';
 
 export function* createMeetup({ payload }) {
   try {
@@ -15,7 +15,6 @@ export function* createMeetup({ payload }) {
     yield call(api.post, '/meetups', data);
 
     toast.success('Meetup criado com sucesso!');
-    yield put(loadMeetupsRequest());
 
     history.push('/meetups');
   } catch (err) {
@@ -36,7 +35,24 @@ export function* loadMeetups() {
   yield put(loadMeetupsSuccess(data));
 }
 
+export function* updateMeetup({ payload }) {
+  try {
+    const { id, data } = payload;
+
+    yield call(api.put, `/meetups/${id}`, data);
+
+    yield put(loadMeetupsRequest());
+
+    toast.success('Meetup editado com sucesso!');
+
+    history.push(`/meetups/${id}`);
+  } catch (err) {
+    toast.error('Não foi possível salvar as alterações, verifique os dados!');
+  }
+}
+
 export default all([
   takeLatest('@meetup/CREATE_MEETUP_REQUEST', createMeetup),
   takeLatest('@meetup/LOAD_MEETUPS_REQUEST', loadMeetups),
+  takeLatest('@meetup/UPDATE_MEETUP_REQUEST', updateMeetup),
 ]);

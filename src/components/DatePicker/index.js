@@ -1,4 +1,5 @@
 import { useField } from '@rocketseat/unform';
+import { parseISO } from 'date-fns';
 import ptBR from 'date-fns/locale/pt-BR';
 import PropTypes from 'prop-types';
 import React, { useRef, useEffect, useState } from 'react';
@@ -6,7 +7,10 @@ import ReactDatePicker from 'react-datepicker';
 
 export default function DatePicker({ name, placeholder }) {
   const { fieldName, registerField, defaultValue, error } = useField(name);
-  const [date, setDate] = useState(defaultValue);
+  const [date, setDate] = useState(
+    defaultValue ? parseISO(defaultValue) : defaultValue
+  );
+
   const ref = useRef(null);
 
   useEffect(() => {

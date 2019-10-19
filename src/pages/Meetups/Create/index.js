@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 
 import DatePicker from '~/components/DatePicker';
 import FileInput from '~/components/FileInput';
-import { createMeetupRequest } from '~/store/modules/meetup/actions';
+import { addMeetupRequest } from '~/store/modules/meetup/actions';
 
 import { Container, Form, Button } from '../styles';
 
@@ -15,7 +15,7 @@ const schema = Yup.object().shape({
   description: Yup.string().required(
     'Descreva informações importantes do evento'
   ),
-  date: Yup.date().required('Informe a data do evento'),
+  date: Yup.string().required('Informe a data do evento'),
   location: Yup.string().required('O local do evento é obrigatório'),
 });
 
@@ -23,7 +23,7 @@ export default function Create() {
   const dispatch = useDispatch();
 
   function handleSubmit(data) {
-    dispatch(createMeetupRequest(data));
+    dispatch(addMeetupRequest(data));
   }
 
   return (

@@ -6,9 +6,10 @@ import api from '~/services/api';
 
 import { Container } from './styles';
 
-export default function FileInput({ name }) {
-  const { defaultValue, registerField, fieldName, error } = useField(name);
-
+export default function FileInput({ name, dataName }) {
+  const { registerField, fieldName, error, defaultValue } = useField(
+    dataName || name
+  );
   const [file, setFile] = useState(defaultValue && defaultValue.id);
   const [preview, setPreview] = useState(defaultValue && defaultValue.url);
 
@@ -17,12 +18,12 @@ export default function FileInput({ name }) {
   useEffect(() => {
     if (ref.current) {
       registerField({
-        name: fieldName,
+        name,
         ref: ref.current,
         path: 'dataset.file',
       });
     }
-  }, [ref.current]);// eslint-disable-line
+  }, [ref.current, name]);// eslint-disable-line
 
   async function handleChange(e) {
     const data = new FormData();
@@ -57,4 +58,14 @@ export default function FileInput({ name }) {
 
 FileInput.propTypes = {
   name: PropTypes.string.isRequired,
+  dataName: PropTypes.string,
+  defaultValue: PropTypes.shape({
+    id: PropTypes.number,
+    url: PropTypes.string,
+  }),
+};
+
+FileInput.defaultProps = {
+  defaultValue: null,
+  dataName: null,
 };
