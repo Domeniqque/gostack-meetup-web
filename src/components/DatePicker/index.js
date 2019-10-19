@@ -26,10 +26,9 @@ export default function DatePicker({ name, placeholder }) {
         name={fieldName}
         selected={date}
         locale={ptBR}
-        dateFormat="dd/MM/yyyy HH:mm"
+        dateFormat="dd/MM/yyyy HH"
         showTimeSelect
-        timeFormat="HH:mm"
-        timeIntervals={30}
+        timeFormat="HH"
         timeCaption="Horário"
         peekNextMonth
         showMonthDropdown

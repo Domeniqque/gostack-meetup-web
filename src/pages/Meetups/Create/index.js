@@ -1,4 +1,4 @@
-import { Form, Input } from '@rocketseat/unform';
+import { Input } from '@rocketseat/unform';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
@@ -7,7 +7,7 @@ import DatePicker from '~/components/DatePicker';
 import FileInput from '~/components/FileInput';
 import { createMeetupRequest } from '~/store/modules/meetup/actions';
 
-import { Container } from '../styles';
+import { Container, Form } from '../styles';
 
 const schema = Yup.object().shape({
   file_id: Yup.number().required('Selecione uma imagem para o evento'),
