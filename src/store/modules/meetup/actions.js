@@ -31,3 +31,10 @@ export function updateMeetupSuccess(data) {
     payload: { data },
   };
 }
+
+export function deleteMeetupRequest(id) {
+  return {
+    type: '@meetup/DELETE_MEETUP_REQUEST',
+    payload: { id },
+  };
+}

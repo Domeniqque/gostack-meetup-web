@@ -30,7 +30,7 @@ export default function Edit() {
   const dispatch = useDispatch();
 
   function handleSubmit(data) {
-    dispatch(updateMeetupRequest(id, data));
+    dispatch(updateMeetupRequest(Number(id), data));
   }
 
   return (

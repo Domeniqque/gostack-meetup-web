@@ -1,9 +1,10 @@
 import React from 'react';
 import { MdEdit, MdDeleteForever, MdEvent, MdPlace } from 'react-icons/md';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
 import history from '~/services/history';
+import { deleteMeetupRequest } from '~/store/modules/meetup/actions';
 import colors from '~/styles/colors';
 
 import { Container, Button } from '../styles';
@@ -11,6 +12,7 @@ import { MeetupDetails } from './styles';
 
 export default function Details() {
   const { id } = useParams();
+  const dispatch = useDispatch();
 
   const meetup = useSelector(state =>
     state.meetup.list.find(m => m.id === Number(id))
@@ -18,6 +20,10 @@ export default function Details() {
 
   function handleEdit() {
     history.push(`/meetups/${meetup.id}/edit`);
+  }
+
+  function handleDelete() {
+    dispatch(deleteMeetupRequest(meetup.id));
   }
 
   return (
@@ -31,7 +37,7 @@ export default function Details() {
             <span>Editar</span>
           </Button>
 
-          <Button type="button">
+          <Button type="button" onClick={handleDelete}>
             <MdDeleteForever color="#fff" size={20} />
             <span>Cancelar</span>
           </Button>
