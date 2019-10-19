@@ -1,8 +1,12 @@
+import { format, parseISO } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 import { toast } from 'react-toastify';
-import { all, call, takeLatest } from 'redux-saga/effects';
+import { all, call, takeLatest, put } from 'redux-saga/effects';
 
 import api from '~/services/api';
 import history from '~/services/history';
+
+import { loadMeetupsRequest, loadMeetupsSuccess } from './actions';
 
 export function* createMeetup({ payload }) {
   try {
@@ -18,4 +22,20 @@ export function* createMeetup({ payload }) {
   }
 }
 
-export default all([takeLatest('@meetup/CREATE_MEETUP_REQUEST', createMeetup)]);
+export function* loadMeetups() {
+  const response = yield call(api.get, '/organizing');
+
+  const data = response.data.map(meetup => ({
+    ...meetup,
+    formatedDate: format(parseISO(meetup.date), "dd 'de' MMMMMM', às' H'h'", {
+      locale: ptBR,
+    }),
+  }));
+
+  yield put(loadMeetupsSuccess(data));
+}
+
+export default all([
+  takeLatest('@meetup/CREATE_MEETUP_REQUEST', createMeetup),
+  takeLatest('@meetup/LOAD_MEETUPS_REQUEST', loadMeetups),
+]);
