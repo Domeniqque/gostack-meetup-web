@@ -7,8 +7,7 @@ import * as Yup from 'yup';
 import DatePicker from '~/components/DatePicker';
 import FileInput from '~/components/FileInput';
 import { updateMeetupRequest } from '~/store/modules/meetup/actions';
-
-import { Container, Form, Button } from '../styles';
+import { Container, Form, Button } from '~/styles';
 
 const schema = Yup.object().shape({
   file_id: Yup.number().required('Selecione uma imagem para o evento'),

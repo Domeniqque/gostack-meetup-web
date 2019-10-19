@@ -1,11 +1,13 @@
-import { Form, Input } from '@rocketseat/unform';
+import { Input } from '@rocketseat/unform';
 import React from 'react';
+import { MdAddCircleOutline } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 
 import { updateProfileRequest } from '~/store/modules/user/actions';
+import { Container, Form, Button } from '~/styles';
 
-import { Container } from './styles';
+import { Divider } from './styles';
 
 const schema = Yup.object().shape({
   name: Yup.string().required('O nome é obrigatório'),
@@ -41,10 +43,16 @@ export default function Profile() {
 
   return (
     <Container>
+      <header>
+        <h1>Meu perfil</h1>
+      </header>
+
       <Form onSubmit={handleSubmit} initialData={profile} schema={schema}>
         <Input name="name" placeholder="Seu nome completo" />
         <Input name="email" type="email" placeholder="Seu email" />
-        <hr />
+
+        <Divider />
+
         <Input
           name="oldPassword"
           type="password"
@@ -57,7 +65,10 @@ export default function Profile() {
           placeholder="Confirmação de senha"
         />
 
-        <button type="submit">Salvar Perfil</button>
+        <Button type="submit">
+          <MdAddCircleOutline color="#fff" size={20} />
+          <span>Salvar Perfil</span>
+        </Button>
       </Form>
     </Container>
   );

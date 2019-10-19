@@ -5,9 +5,9 @@ import { useParams } from 'react-router-dom';
 
 import history from '~/services/history';
 import { deleteMeetupRequest } from '~/store/modules/meetup/actions';
+import { Container, Button } from '~/styles';
 import colors from '~/styles/colors';
 
-import { Container, Button } from '../styles';
 import { MeetupDetails } from './styles';
 
 export default function Details() {
